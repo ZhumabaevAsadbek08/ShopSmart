@@ -1,0 +1,52 @@
+{% load static %}
+{% load my_tags %}
+<!DOCTYPE html>
+<html lang="ru" class="cover">
+
+<head>
+    <!-- Названия -->
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+
+    <!-- Мета-теги -->
+    <meta charset="utf-8">
+    <meta property="og:site_name" content="FlashCard">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="theme-color" content="var(--base-text-color)">
+    <meta name="theme-color" content="var(--base-background-color)" media="(prefers-color-scheme: light)">
+    <meta class="meta-color-scheme" name="color-scheme"
+        content="light">
+
+    <!-- Логотип -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/body.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/js.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    {% if not user.is_authenticated %}
+    <link rel="stylesheet" href="{% static 'css/registration.css' %}">
+    {% endif %}
+
+    <!-- JS -->
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/ajax.js' %}"></script>
+
+    <!-- Шрифт -->
+</head>
+
+<body>
+    {% include "header.html" %}
+    {% include "navbar.html" %}
+    {% block content %}
+    {% endblock %}
+    {% include "forms.html" %}
+    {% include "js.html" %}
+</body>
+
+</html>
